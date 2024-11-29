@@ -44,6 +44,7 @@ include 'user_login_check.php';
             $Status_List = [
                  "in-order" => "อยู่ในตะกร้า",
                  "on-kitchen" => "อยู่ในครัว",
+                 "in-delete" => "รออนุมัติยกเลิก",
                  "done" => "จัดส่งแล้ว",
 
             ];
@@ -57,6 +58,7 @@ include 'user_login_check.php';
                         <th>' . $ROW["food_price"] * $ROW["food_amount"] .' บาท'. '</th>
                         <th>'.$Status_List[$ROW["food_status"]].'</th>
                         <th>'.$ROW["time_stamp"].'</th>
+                        <th><a class="btn btn-outline-danger" href="process_require_delete_order.php?id='.$ROW["key_id"].'">ยกเลิกสินค้า</a></th>
                     </tr>
                  </tbody>';
                 }

@@ -19,7 +19,7 @@ include 'user_login_check.php';
     include 'sidebar_check.php';
     ?>
     <main class="main-container container">
-        <h4 class="display-5 text-center my-3">จัดการคำสั่งซื้อลูกค้า</h4>
+        <h4 class="display-5 text-center my-3">จัดการคำขอยกเลิกสินค้า</h4>
         <table class="table table-bordered table-hover text-center">
             <thead>
                 <tr>
@@ -28,7 +28,7 @@ include 'user_login_check.php';
                     <td>จำนวน</td>
                     <td>ราคา</td>
                     <td>เวลาที่สั่ง ป/ด/ว</td>
-                    <td colspan="2">สถานะการจัดส่ง</td>
+                    <td colspan="2">คำขอ</td>
                 </tr>
             </thead>
             <!-- table body -->
@@ -40,13 +40,11 @@ include 'user_login_check.php';
             $RES = mysqli_query($connect, $SQL);
 
             $Status_List = [
-                "on-kitchen" => "อยู่ในครัว",
-                "done" => "จัดส่งแล้ว",
-
+                "in-delete" => "กำลังรออนุมัติ",
             ];
 
             while ($ROW = mysqli_fetch_array($RES)) {
-                if ($ROW["food_status"] == "on-kitchen") {
+                if ($ROW["food_status"] == "in-delete") {
                     $CUSTOMER_ID = $ROW["customer_id"];
                     $USER_ROW = "SELECT username_account FROM members WHERE id = '$CUSTOMER_ID'";
                     $CALLBACK_USERROW = mysqli_query($connect, $USER_ROW);
@@ -60,7 +58,7 @@ include 'user_login_check.php';
                     <th>' . $ROW["food_price"] * $ROW["food_amount"] . ' บาท' . '</th>
                     <th>' . $ROW["time_stamp"] . '</th>
                     <th>' . $Status_List[$ROW["food_status"]] . '</th>
-                    <th><a class="btn btn-outline-success"  href="process_restaurant_require.php?id=' . $ROW["key_id"] . '">จัดส่ง</a></th>
+                    <th><a class="btn btn-outline-secondary" href="process_require_sure_delete.php?id='.$ROW['key_id'].'">ยืนยันคำขอ</a></th>
                 </tr>
              </tbody>';
                 }

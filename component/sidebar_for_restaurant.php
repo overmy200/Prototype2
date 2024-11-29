@@ -16,6 +16,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="home.php" class="nav-link col-12 px-3"><i class="pe-1 bi bi-house"></i>หน้าหลัก</a></li>
                     <li class="nav-item"><a href="form_restaurant_require.php" class="nav-link col-12 px-3"><i class="pe-1 bi bi-send-exclamation"></i>คำสั่งซื้ออาหาร</a></li>
+                    <li class="nav-item"><a href="form_restaurant_delete_require.php" class="nav-link col-12 px-3"><i class="pe-1 bi bi-send-x"></i>คำขอยกเลิกอาหาร</a></li>
                     <li class="nav-item"><button class="btn col-12 text-start" data-bs-toggle="collapse" data-bs-target="#setting-dropdown"><i class="bi bi-gear pe-1"></i>การตั้งค่า</button>
                         <div class="collapse" id="setting-dropdown">
                             <ul class="navbar-nav">
